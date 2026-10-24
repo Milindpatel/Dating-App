@@ -24,7 +24,8 @@ app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<DataContext>();
-    await context.Database.MigrateAsync();
+    // Demo app: create the schema directly. Switch to migrations (see README) before storing real data.
+    await context.Database.EnsureCreatedAsync();
     await Seed.SeedUsersAsync(context);
 }
 

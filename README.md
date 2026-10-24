@@ -28,6 +28,17 @@ npm start
 
 On first run the database is created and seeded with a few demo users. In development the OpenAPI document is at `https://localhost:5001/openapi/v1.json`.
 
+### Database
+
+The SQLite schema is created automatically on startup with `EnsureCreated`, which is fine for this demo. Before storing real data, switch to migrations:
+
+```bash
+dotnet tool install --global dotnet-ef
+cd API && dotnet ef migrations add InitialCreate -o Data/Migrations
+```
+
+and replace `EnsureCreatedAsync()` with `MigrateAsync()` in `Program.cs`.
+
 ## API
 
 | Method | Route | Description |

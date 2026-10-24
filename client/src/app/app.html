@@ -1,0 +1,17 @@
+<main class="container py-4">
+  <h1>{{ title }}</h1>
+
+  @if (loading()) {
+    <p class="text-muted">Loading users...</p>
+  } @else if (error()) {
+    <div class="alert alert-danger" role="alert">{{ error() }}</div>
+  } @else {
+    <ul class="list-group">
+      @for (user of users(); track user.id) {
+        <li class="list-group-item">{{ user.id }} - {{ user.userName }}</li>
+      } @empty {
+        <li class="list-group-item text-muted">No users yet.</li>
+      }
+    </ul>
+  }
+</main>

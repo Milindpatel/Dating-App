@@ -455,4 +455,7 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-appsettings.json
+# Local SQLite databases
+*.db
+*.db-shm
+*.db-wal
